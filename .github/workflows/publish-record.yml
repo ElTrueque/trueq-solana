@@ -1,0 +1,23 @@
+name: Publish reviewed TRUEQ record
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/publish-record.yml']
+    branches: [main]
+permissions:
+  contents: write
+concurrency:
+  group: trueq-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: main
+      - name: Verify and publish exact reviewed files
+        env:
+          RECORD_SHA256: 8b4fbdd4e8b813fd02c6259f2816937063c0489f6a6927b6793d1609ac0342a8
+        run: python3 publish-record.py
