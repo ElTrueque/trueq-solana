@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-12T08:49:36.835Z",
+  "cid": "bafkreieli2cx46ryv6evklow6ks2fwr6vig47qlm5mbzm7fnwc2gl5ndbq",
+  "codec": "raw",
+  "multihash": "sha2-256",
+  "size": 815,
+  "sha256": "8b46857e7a38af89552dd6f2a5a2da3eaa0dcfc16ceb03967cadb0b465f5a30c",
+  "gateway": "gateway.pinata.cloud",
+  "gatewayBytesEqual": true,
+  "attempts": [
+    {
+      "gateway": "ipfs.io",
+      "httpStatus": 429
+    },
+    {
+      "gateway": "gateway.pinata.cloud",
+      "httpStatus": 200
+    }
+  ]
+}

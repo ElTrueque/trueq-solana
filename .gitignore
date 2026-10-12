@@ -1,0 +1,8 @@
+node_modules/
+.env
+.env.*
+*.key
+*-keypair.json
+keystore/
+__pycache__/
+verification-output/

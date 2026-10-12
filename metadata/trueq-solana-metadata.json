@@ -1,0 +1,12 @@
+{
+  "name": "el-trueque.com",
+  "symbol": "TRUEQ",
+  "description": "TRUEQ is the token of El Trueque (el-trueque.com), multi-chain launchpad and marketplace for digital creators. 50% of El Trueque's fees are used to buy back and burn TRUEQ. Supply of 1,000,000 TRUEQ, 40,000 burned at launch: 80% in vesting for user rewards (nothing released for 3 months, then 24 months linear), 15% in a single-sided SOL pool on Meteora with liquidity locked forever, 4% burned and 1% airdropped to El Trueque NFT holders.\n\nPIM",
+  "image": "https://ipfs.io/ipfs/bafybeihbhqcpnlgrkrtoir5xepsokhqbuuafina7fwx5isttoj7yth5cha",
+  "external_url": "https://el-trueque.com",
+  "extensions": {
+    "website": "https://el-trueque.com",
+    "twitter": "https://x.com/ElTruequeMarket",
+    "telegram": "https://t.me/eltruequeapp"
+  }
+}

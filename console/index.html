@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TRUEQ en Solana · consola de lanzamiento</title>
+<style>
+body{font-family:system-ui,Segoe UI,Arial,sans-serif;background:#07100b;color:#eef;max-width:860px;margin:24px auto;padding:0 16px}
+h1{color:#00ff87;font-size:22px}section{border:1px solid #2a3d31;border-radius:12px;padding:16px;margin:14px 0;background:#0b1510}
+h2{font-size:17px;margin:0 0 10px}button{background:#00ff87;color:#032;border:0;border-radius:8px;padding:10px 14px;font-weight:700;cursor:pointer;margin:6px 6px 0 0}
+button:disabled{background:#3a4a40;color:#9aa;cursor:not-allowed}code{background:#13241a;padding:2px 5px;border-radius:5px;word-break:break-all}
+.ok{color:#00ff87}.bad{color:#ff6b6b}.warn{color:#ffd166}pre{white-space:pre-wrap;background:#0f1c14;padding:10px;border-radius:8px;font-size:13px}
+td{padding:3px 8px;vertical-align:top}a{color:#7fd}
+</style></head><body>
+<h1>TRUEQ en Solana · consola de lanzamiento</h1>
+<p>Corre en tu PC. Firma solo con tu Phantom: ninguna clave sale de tu wallet. Cada paso se <b>simula contra la red real</b> antes de pedir la firma.</p>
+
+<section><h2>0 · Wallet</h2>
+<p>Wallet creadora esperada: <code id="expected"></code></p>
+<button id="connect">Conectar Phantom</button>
+<p id="wallet"></p></section>
+
+<section><h2>1 · Crear el token</h2>
+<table><tr><td>Nombre / símbolo</td><td><b>el-trueque.com</b> · <b>TRUEQ</b></td></tr>
+<tr><td>Decimales / supply</td><td>6 · 1.000.000 a tu wallet</td></tr>
+<tr><td>Autoridades</td><td>sin congelamiento; la de acuñación se quita en la misma transacción</td></tr>
+<tr><td>Metadatos</td><td><code id="uri"></code> · <b>no modificables nunca</b></td></tr></table>
+<button id="simCreate" disabled>Simular creación</button><button id="create" disabled>Firmar y crear</button>
+<pre id="outCreate"></pre></section>
+
+<section><h2>2 · Quemar 40.000 TRUEQ</h2>
+<p>Token: <code id="mintShown">—</code></p>
+<button id="simBurn" disabled>Simular quema</button><button id="burn" disabled>Firmar y quemar</button>
+<pre id="outBurn"></pre></section>
+
+<script src="web3.iife.min.js"></script>
+<script src="trueq-builders.js"></script>
+<script>
+const W=solanaWeb3,B=TrueqBuilders(W);
+// The official public endpoint refuses browser requests (403 Access forbidden); publicnode serves them.
+const RPC='https://solana-rpc.publicnode.com';
+const EXPECTED='EBTS1qQjvfbxCXXcYAXbjVGjEYyGotUpuV98eTtBgtej';
+const URI='https://ipfs.io/ipfs/bafkreieli2cx46ryv6evklow6ks2fwr6vig47qlm5mbzm7fnwc2gl5ndbq';
+const conn=new W.Connection(RPC,'confirmed');
+const $=id=>document.getElementById(id),say=(id,t,cls)=>{$(id).className=cls||'';$(id).textContent=t;};
+let provider=null,owner=null,mintKp=null,mint=null;
+$('expected').textContent=EXPECTED;$('uri').textContent=URI;
+const saved=localStorage.getItem('trueq.mint');if(saved){mint=new W.PublicKey(saved);$('mintShown').textContent=saved;}
+const solscan=(kind,v)=>`https://solscan.io/${kind}/${v}`;
+// Polls the signature status (no websocket): up to 2 minutes, then asks to check Solscan instead of retrying blindly.
+async function confirmSig(sig){for(let i=0;i<60;i++){const st=(await conn.getSignatureStatuses([sig])).value[0];if(st){if(st.err)throw Error('La transacción falló: '+JSON.stringify(st.err));if(st.confirmationStatus==='confirmed'||st.confirmationStatus==='finalized')return;}await new Promise(r=>setTimeout(r,2000));}throw Error('Sin confirmación en 2 minutos. NO reintentes: revisa la transacción en '+solscan('tx',sig)+' y avísale a Claude.');}
+
+$('connect').onclick=async()=>{
+  try{
+    provider=window.phantom?.solana;if(!provider?.isPhantom)throw Error('No encuentro Phantom en este navegador.');
+    const r=await provider.connect();owner=r.publicKey;
+    if(owner.toBase58()!==EXPECTED){say('wallet','Conectaste '+owner.toBase58()+'. Cambia en Phantom a la wallet esperada.','bad');return;}
+    const bal=await conn.getBalance(owner);
+    say('wallet','Conectada '+owner.toBase58()+' · '+(bal/1e9).toFixed(4)+' SOL','ok');
+    try{B.validateUri(URI);$('simCreate').disabled=false;}catch(e){say('outCreate','Falta la dirección de los metadatos: '+e.message,'bad');}
+    if(mint){$('simBurn').disabled=false;}
+  }catch(e){say('wallet',e.message,'bad');}
+};
+
+async function v0(ixs,signers=[]){
+  const {blockhash}=await conn.getLatestBlockhash('confirmed');
+  const msg=new W.TransactionMessage({payerKey:owner,recentBlockhash:blockhash,instructions:ixs}).compileToV0Message();
+  const tx=new W.VersionedTransaction(msg);if(signers.length)tx.sign(signers);return tx;
+}
+function readMint(b){return{mintAuthority:b.readUInt32LE?b.readUInt32LE(0):new DataView(b.buffer,b.byteOffset).getUint32(0,true),supply:new DataView(b.buffer,b.byteOffset).getBigUint64(36,true),decimals:b[44],freeze:new DataView(b.buffer,b.byteOffset).getUint32(46,true)};}
+const fromB64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+
+$('simCreate').onclick=async()=>{
+  try{
+    mintKp=W.Keypair.generate();
+    const rentMint=await conn.getMinimumBalanceForRentExemption(82);
+    const tx=await v0(B.createTokenInstructions({payer:owner,mint:mintKp.publicKey,uri:URI,rentMint}),[mintKp]);
+    const before=await conn.getBalance(owner);
+    const r=(await conn.simulateTransaction(tx,{sigVerify:false,replaceRecentBlockhash:true,accounts:{encoding:'base64',addresses:[mintKp.publicKey.toBase58(),owner.toBase58()]}})).value;
+    if(r.err){say('outCreate','La simulación falló: '+JSON.stringify(r.err)+'\n'+(r.logs||[]).slice(-8).join('\n'),'bad');return;}
+    const m=readMint(fromB64(r.accounts[0].data[0])),cost=(before-r.accounts[1].lamports)/1e9;
+    const okAll=m.mintAuthority===0&&m.freeze===0&&m.supply===B.SUPPLY&&m.decimals===6;
+    say('outCreate',`Simulación ${okAll?'correcta':'CON DIFERENCIAS'}:\n· token ${mintKp.publicKey.toBase58()}\n· supply ${Number(m.supply)/1e6} · decimales ${m.decimals}\n· autoridad de acuñación: ${m.mintAuthority?'presente':'ninguna'} · congelamiento: ${m.freeze?'presente':'ninguno'}\n· costo aproximado: ${cost.toFixed(5)} SOL\nSi está bien, pulsa "Firmar y crear".`,okAll?'ok':'bad');
+    $('create').disabled=!okAll;
+  }catch(e){say('outCreate',e.message,'bad');}
+};
+
+$('create').onclick=async()=>{
+  try{
+    $('create').disabled=true;
+    const rentMint=await conn.getMinimumBalanceForRentExemption(82);
+    const tx=await v0(B.createTokenInstructions({payer:owner,mint:mintKp.publicKey,uri:URI,rentMint}),[mintKp]);
+    const {signature}=await provider.signAndSendTransaction(tx);
+    localStorage.setItem('trueq.mint',mintKp.publicKey.toBase58());mint=mintKp.publicKey;$('mintShown').textContent=mint.toBase58();
+    say('outCreate','Enviada: '+signature+'\nEsperando confirmación…','warn');
+    await confirmSig(signature);
+    const info=await conn.getAccountInfo(mint,'confirmed'),m=readMint(info.data);
+    const md=await conn.getAccountInfo(B.metadataPda(mint),'confirmed');
+    say('outCreate',`TOKEN CREADO\n· token ${mint.toBase58()}\n· supply ${Number(m.supply)/1e6} · decimales ${m.decimals}\n· acuñación: ${m.mintAuthority?'PRESENTE':'ninguna'} · congelamiento: ${m.freeze?'PRESENTE':'ninguno'}\n· metadatos: ${md?'creados':'NO ENCONTRADOS'}\n· transacción: ${solscan('tx',signature)}\n· token en Solscan: ${solscan('token',mint.toBase58())}\nMándale a Claude la dirección del token.`,'ok');
+    $('simBurn').disabled=false;
+  }catch(e){say('outCreate',e.message,'bad');$('create').disabled=false;}
+};
+
+$('simBurn').onclick=async()=>{
+  try{
+    const tx=await v0([B.burnInstruction({owner,mint})]);
+    const r=(await conn.simulateTransaction(tx,{sigVerify:false,replaceRecentBlockhash:true,accounts:{encoding:'base64',addresses:[mint.toBase58()]}})).value;
+    if(r.err){say('outBurn','La simulación falló: '+JSON.stringify(r.err)+'\n'+(r.logs||[]).slice(-6).join('\n'),'bad');return;}
+    const m=readMint(fromB64(r.accounts[0].data[0]));
+    say('outBurn',`Simulación correcta: el supply quedaría en ${Number(m.supply)/1e6} TRUEQ.\nSi está bien, pulsa "Firmar y quemar".`,'ok');$('burn').disabled=false;
+  }catch(e){say('outBurn',e.message,'bad');}
+};
+
+$('burn').onclick=async()=>{
+  try{
+    $('burn').disabled=true;
+    const {signature}=await provider.signAndSendTransaction(await v0([B.burnInstruction({owner,mint})]));
+    say('outBurn','Enviada: '+signature+'\nEsperando confirmación…','warn');
+    await confirmSig(signature);
+    const m=readMint((await conn.getAccountInfo(mint,'confirmed')).data);
+    say('outBurn',`QUEMA HECHA\n· supply ahora: ${Number(m.supply)/1e6} TRUEQ\n· transacción: ${solscan('tx',signature)}\nGuarda este enlace: es el recibo de la quema.`,'ok');
+  }catch(e){say('outBurn',e.message,'bad');$('burn').disabled=false;}
+};
+</script></body></html>

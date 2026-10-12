@@ -1,0 +1,150 @@
+{
+  "originalConsoleZipSha256": "16e1cfa6c30ce2003c33b24f06b20949a5a5418acec1c32428adb3cba8f2d4a0",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 91,
+      "sha256": "5eddecc42ad740970461d65bbc3d53bc336dda4faa8217499ce3b4eecf437ebc"
+    },
+    {
+      "path": "console/index.html",
+      "bytes": 8819,
+      "sha256": "332589eaf9492c0a76dd16532094b902db6da91d1da365b397a8b38d91b9d4fe"
+    },
+    {
+      "path": "console/README.md",
+      "bytes": 6063,
+      "sha256": "9b9aaf15d84c2e530eaf439380a7cda4ba2bc3d2a0f62c4a46b625780644f382"
+    },
+    {
+      "path": "console/serve.mjs",
+      "bytes": 982,
+      "sha256": "1d62979f52711217287becffd4babd2b9f4c2953b70e35c67c0e54e1f543e42d"
+    },
+    {
+      "path": "console/SHA256SUMS",
+      "bytes": 320,
+      "sha256": "31131e7d8426229631040f4c4a0c88a0ebd84a30a65fa10110a2c4831baa56d3"
+    },
+    {
+      "path": "console/trueq-builders.js",
+      "bytes": 4843,
+      "sha256": "fbb790ecffaf2499ce72ad394de620be8eb215b720ba90cd61153c3b1e8c7621"
+    },
+    {
+      "path": "console/web3-LICENSE",
+      "bytes": 1060,
+      "sha256": "c181f3e6911f515d2b5d18513f8e24fba252c36856978fa80b01249fa813453f"
+    },
+    {
+      "path": "console/web3.iife.min.js",
+      "bytes": 459806,
+      "sha256": "89c3d6c27cae93882d78153ef7f23c8d50f53f5e3f0b72666bb909c6a4dc9fac"
+    },
+    {
+      "path": "evidence/burn.json",
+      "bytes": 4186,
+      "sha256": "d8f369b886e043052f8089311af966f65c631a30f560f7c9d01b24b439d36212"
+    },
+    {
+      "path": "evidence/console-audit.json",
+      "bytes": 2526,
+      "sha256": "bfa8853457e3ed441ee8e1989c88c17fc58c933ff53810709cdfa858ada71637"
+    },
+    {
+      "path": "evidence/creation.json",
+      "bytes": 10399,
+      "sha256": "0c9279424a0245bb7c5d275035b1f184feaa64f6b2ea4186a14e3cbe066cca67"
+    },
+    {
+      "path": "evidence/jupiter-accounts-rpc.json",
+      "bytes": 1330,
+      "sha256": "f00e611647f56b8faca3844586fb1a13c4a1cf9be6feb8151f14d85453764107"
+    },
+    {
+      "path": "evidence/jupiter-accounts.json",
+      "bytes": 1191,
+      "sha256": "ef2de50e45bcb38316120323dd1b721d614451e9a8904fb7f574d36880eec827"
+    },
+    {
+      "path": "evidence/jupiter-creation-rpc.json",
+      "bytes": 10864,
+      "sha256": "7cc9e1ca4c450384a8fe131c63a82444b16fc477c4cd6db7c738c5827cd69bd7"
+    },
+    {
+      "path": "evidence/jupiter-decoded.json",
+      "bytes": 2679,
+      "sha256": "60e9997645bf010edcfb5fcee842dd771c4b72e107f43bc750e0f8d3c63bbc25"
+    },
+    {
+      "path": "evidence/metadata-account.json",
+      "bytes": 1612,
+      "sha256": "4cc1b94ba9676e76235f7f176969143ae482c6c12a023784bad63ed6dde0f7cd"
+    },
+    {
+      "path": "evidence/metadata-cid.json",
+      "bytes": 487,
+      "sha256": "9d747fb8e73ef28f5aeb6a14d7cc20f0618fdfcfee7485906e53734fcd8d9384"
+    },
+    {
+      "path": "evidence/mint.json",
+      "bytes": 638,
+      "sha256": "512ae4e16218ebe2dcf6e93942d61a9daf3540bd5bda061aa31a875dc50984dd"
+    },
+    {
+      "path": "evidence/verification.json",
+      "bytes": 5479,
+      "sha256": "48b0c74427a75c83089f008cd665d266f45678b961c3fb606a87b045aa0b47a1"
+    },
+    {
+      "path": "metadata/trueq-solana-metadata.json",
+      "bytes": 815,
+      "sha256": "8b46857e7a38af89552dd6f2a5a2da3eaa0dcfc16ceb03967cadb0b465f5a30c"
+    },
+    {
+      "path": "README.es.md",
+      "bytes": 7303,
+      "sha256": "a8119a3363a4972102029369af850bda15830d14e30bb03b7ac44bebabb685ef"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7294,
+      "sha256": "8a8c3284102b3ce59021ed71145ed7e84251659ac9f33b5a8cdc12e7ec663e51"
+    },
+    {
+      "path": "verify/jupiter.mjs",
+      "bytes": 13737,
+      "sha256": "43f2e632fb82ea4ae57903983a12289c164ca19557f0d1a2205d821b4eb59da2"
+    },
+    {
+      "path": "verify/jupiter.test.mjs",
+      "bytes": 6780,
+      "sha256": "2d44de52cf8a044a3b12b650866c3638614110ae2d73fc22593cd5c929a8fed2"
+    },
+    {
+      "path": "verify/lib.mjs",
+      "bytes": 9147,
+      "sha256": "f8e6151928c4a9ff8152296bca73b761257e72818f7ad1dec80bbd205f502e71"
+    },
+    {
+      "path": "verify/vendor/jup-lock-idl.json",
+      "bytes": 66301,
+      "sha256": "0c350e7420809a1d07645929ba0d84d1645b9c97bec3b043a83f605a0e9f6074"
+    },
+    {
+      "path": "verify/vendor/jup-lock-sources.json",
+      "bytes": 2527,
+      "sha256": "7abefd4717b56d79fb0968354b7fa3668ccedef7babf54deeda92a558e2ea770"
+    },
+    {
+      "path": "verify/verify.mjs",
+      "bytes": 15255,
+      "sha256": "9bc6cdd464e87d805f92021a958cd623e1d1dd999b07d8e14581c5570e82d949"
+    },
+    {
+      "path": "verify/verify.test.mjs",
+      "bytes": 5107,
+      "sha256": "5e3276e22ce148a469d66ccf59e7540b645d59a921ef71b142d6a110b782bbe8"
+    }
+  ]
+}

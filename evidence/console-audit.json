@@ -1,0 +1,68 @@
+{
+  "schema": "trueq-console-audit-v1",
+  "checkedAt": "2026-10-12T08:42:24.405Z",
+  "archiveSha256Expected": "16e1cfa6c30ce2003c33b24f06b20949a5a5418acec1c32428adb3cba8f2d4a0",
+  "sourceFilesPreservedByteForByte": true,
+  "files": [
+    {
+      "path": "console/index.html",
+      "bytes": 8819,
+      "sha256": "332589eaf9492c0a76dd16532094b902db6da91d1da365b397a8b38d91b9d4fe"
+    },
+    {
+      "path": "console/trueq-builders.js",
+      "bytes": 4843,
+      "sha256": "fbb790ecffaf2499ce72ad394de620be8eb215b720ba90cd61153c3b1e8c7621"
+    },
+    {
+      "path": "console/serve.mjs",
+      "bytes": 982,
+      "sha256": "1d62979f52711217287becffd4babd2b9f4c2953b70e35c67c0e54e1f543e42d"
+    },
+    {
+      "path": "console/web3.iife.min.js",
+      "bytes": 459806,
+      "sha256": "89c3d6c27cae93882d78153ef7f23c8d50f53f5e3f0b72666bb909c6a4dc9fac"
+    }
+  ],
+  "dependency": {
+    "name": "@solana/web3.js",
+    "version": "1.98.0",
+    "npmUrl": "https://registry.npmjs.org/@solana/web3.js/-/web3.js-1.98.0.tgz",
+    "jsdelivrUrl": "https://cdn.jsdelivr.net/npm/@solana/web3.js@1.98.0/lib/index.iife.min.js",
+    "npmTarballSha256": "8420f094a6a1e9b3a3fe300630440a93fde307a65a9a17430473ff81ad849dcc",
+    "iifeSha256": "89c3d6c27cae93882d78153ef7f23c8d50f53f5e3f0b72666bb909c6a4dc9fac",
+    "equalsNpm": true,
+    "equalsJsdelivr": true,
+    "license": "MIT",
+    "licenseSha256": "c181f3e6911f515d2b5d18513f8e24fba252c36856978fa80b01249fa813453f"
+  },
+  "safetyReview": {
+    "automatedIndicators": {
+      "privateKeyPem": false,
+      "credentialedUrl": false,
+      "keyProvider": false,
+      "personalPathOrLocation": false,
+      "commonSecretToken": false,
+      "storedSecretKey": false
+    },
+    "manuallyReviewedFirstPartyFiles": [
+      "index.html",
+      "trueq-builders.js",
+      "serve.mjs"
+    ],
+    "findings": [],
+    "publicAddressesPresent": "Creator wallet, official Solana programs and IPFS metadata URI; authorized for this public record.",
+    "runtimeKeyGeneration": "Mint Keypair.generate() creates the mint key only at runtime; no generated key or wallet key is embedded or copied.",
+    "localPersistence": "Only the public mint address is stored in localStorage.",
+    "server": "Static four-file allowlist, loopback 127.0.0.1:8787; no RPC proxy.",
+    "rpc": "https://solana-rpc.publicnode.com"
+  },
+  "execution": {
+    "consoleOpened": false,
+    "walletConnected": false,
+    "transactionsSigned": false,
+    "transactionsSent": false,
+    "upstreamDownloadedNotExecuted": true
+  }
+}

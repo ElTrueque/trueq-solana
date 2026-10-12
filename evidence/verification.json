@@ -1,0 +1,236 @@
+{
+  "startedAt": "2026-10-12T08:49:30.453Z",
+  "finishedAt": "2026-10-12T08:49:37.103Z",
+  "commitment": "finalized",
+  "readOnly": true,
+  "checks": [
+    {
+      "label": "Solana mainnet genesis hash",
+      "ok": true,
+      "details": "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d"
+    },
+    {
+      "label": "Mint owned by official SPL Token program",
+      "ok": true
+    },
+    {
+      "label": "Mint initialized with 6 decimals",
+      "ok": true
+    },
+    {
+      "label": "No mint authority",
+      "ok": true
+    },
+    {
+      "label": "No freeze authority",
+      "ok": true
+    },
+    {
+      "label": "Current supply: 960,000 TRUEQ",
+      "ok": true,
+      "details": "960000000000"
+    },
+    {
+      "label": "Metadata account: expected PDA and Metaplex owner",
+      "ok": true,
+      "details": "DgsVYg3v9negh4eGEEDAcmbkn927qBiQxsqFvat1JYbB"
+    },
+    {
+      "label": "Metadata name and symbol",
+      "ok": true
+    },
+    {
+      "label": "Metadata URI matches published raw CID",
+      "ok": true
+    },
+    {
+      "label": "Metadata is immutable",
+      "ok": true
+    },
+    {
+      "label": "Metadata file: 815 bytes",
+      "ok": true
+    },
+    {
+      "label": "Metadata CIDv1 raw SHA-256 matches exact local bytes",
+      "ok": true,
+      "details": "8b46857e7a38af89552dd6f2a5a2da3eaa0dcfc16ceb03967cadb0b465f5a30c"
+    },
+    {
+      "label": "Metadata JSON name and symbol",
+      "ok": true
+    },
+    {
+      "label": "Metadata image uses the specified IPFS CID",
+      "ok": true
+    },
+    {
+      "label": "IPFS metadata bytes equal the included file",
+      "ok": true,
+      "details": "gateway.pinata.cloud"
+    },
+    {
+      "label": "23xF9gJf: receipt exists",
+      "ok": true
+    },
+    {
+      "label": "23xF9gJf: requested transaction",
+      "ok": true
+    },
+    {
+      "label": "23xF9gJf: successful execution",
+      "ok": true
+    },
+    {
+      "label": "23xF9gJf: positive confirmed slot",
+      "ok": true
+    },
+    {
+      "label": "Creation signed by creator and mint",
+      "ok": true
+    },
+    {
+      "label": "Creation has the six documented outer instructions",
+      "ok": true
+    },
+    {
+      "label": "Exactly one InitializeMint2: 6 decimals, creator authority, no freeze",
+      "ok": true
+    },
+    {
+      "label": "Exactly 1,000,000 TRUEQ minted to creator ATA",
+      "ok": true
+    },
+    {
+      "label": "Mint authority revoked in creation",
+      "ok": true
+    },
+    {
+      "label": "MintTo precedes revocation",
+      "ok": true
+    },
+    {
+      "label": "Mint account allocated to official SPL Token program",
+      "ok": true
+    },
+    {
+      "label": "Creator associated token account created",
+      "ok": true
+    },
+    {
+      "label": "Immutable metadata created in same transaction",
+      "ok": true
+    },
+    {
+      "label": "Creation balance effect: creator holds 1,000,000 TRUEQ",
+      "ok": true
+    },
+    {
+      "label": "4xMth4F4: receipt exists",
+      "ok": true
+    },
+    {
+      "label": "4xMth4F4: requested transaction",
+      "ok": true
+    },
+    {
+      "label": "4xMth4F4: successful execution",
+      "ok": true
+    },
+    {
+      "label": "4xMth4F4: positive confirmed slot",
+      "ok": true
+    },
+    {
+      "label": "Burn signed by creator",
+      "ok": true
+    },
+    {
+      "label": "BurnChecked: exactly 40,000 TRUEQ, 6 decimals",
+      "ok": true
+    },
+    {
+      "label": "Burn balance effect: 1,000,000 -> 960,000 TRUEQ",
+      "ok": true
+    },
+    {
+      "label": "Jupiter: pinned IDL identifies the official program",
+      "ok": true
+    },
+    {
+      "label": "Jupiter: escrow and token account program owners",
+      "ok": true
+    },
+    {
+      "label": "Jupiter: mint, creator and recipient",
+      "ok": true
+    },
+    {
+      "label": "Jupiter: escrow PDA and bump",
+      "ok": true
+    },
+    {
+      "label": "Jupiter: escrow token ATA and authority",
+      "ok": true
+    },
+    {
+      "label": "Jupiter: token account initialized without delegate/close authority",
+      "ok": true
+    },
+    {
+      "label": "Jupiter: no cancellation and no recipient changes",
+      "ok": true,
+      "details": {
+        "cancelMode": "None",
+        "updateRecipientMode": "None"
+      }
+    },
+    {
+      "label": "Jupiter: exact cliff and 730 daily release parameters",
+      "ok": true
+    },
+    {
+      "label": "Jupiter: original scheduled amount = 799,999.9993 TRUEQ",
+      "ok": true
+    },
+    {
+      "label": "Jupiter: first release Jan 13 2027 and final release Jan 11 2029 at 15:00 UTC",
+      "ok": true
+    },
+    {
+      "label": "Jupiter: current balance covers all scheduled tokens not yet claimed",
+      "ok": true,
+      "details": {
+        "balanceRaw": "799999999300",
+        "claimedRaw": "0",
+        "remainingRaw": "799999999300"
+      }
+    },
+    {
+      "label": "Jupiter: rounding remainder is 0.0007 TRUEQ",
+      "ok": true
+    },
+    {
+      "label": "Jupiter receipt: expected instruction accounts",
+      "ok": true
+    },
+    {
+      "label": "Jupiter receipt: signed by creator and escrow base",
+      "ok": true
+    },
+    {
+      "label": "Jupiter receipt: creation parameters match current escrow",
+      "ok": true
+    },
+    {
+      "label": "Jupiter receipt: SPL TransferChecked of 799,999.9993 TRUEQ",
+      "ok": true
+    },
+    {
+      "label": "Jupiter receipt: escrow deposit and creator balance after vesting",
+      "ok": true
+    }
+  ],
+  "passed": 53,
+  "failed": 0
+}

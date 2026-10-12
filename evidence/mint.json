@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-12T08:49:30.671Z",
+  "address": "3m4etpgjNhFduBznEtQo56u5rKpXEgcYbZzV7ijdiq8W",
+  "finalizedContextSlot": 455986597,
+  "account": {
+    "data": [
+      "AAAAAMPVn8OyO1lQx0QZQAFGd6L+hAoN2voPtTrpiRnDupJQAIB1hN8AAAAGAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+      "base64"
+    ],
+    "executable": false,
+    "lamports": 1066800,
+    "owner": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+    "rentEpoch": 18446744073709552000,
+    "space": 82
+  },
+  "decoded": {
+    "mintAuthority": null,
+    "supply": "960000000000",
+    "decimals": 6,
+    "isInitialized": true,
+    "freezeAuthority": null
+  }
+}

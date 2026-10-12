@@ -1,0 +1,39 @@
+{
+  "project": "Jupiter Lock",
+  "documentation": "https://developers.jup.ag/docs/lock/index",
+  "programId": "LocpQgucEQHbqNABEYvBvwoxCPsSbG91A1QaQhQQqjn",
+  "retrievedDateUtc": "2026-10-12",
+  "repository": "https://github.com/jup-ag/jup-lock-starter",
+  "commit": "e3b207471a4846bdca351d6709a135d06a14fde2",
+  "idl": {
+    "source": "https://raw.githubusercontent.com/jup-ag/jup-lock-starter/e3b207471a4846bdca351d6709a135d06a14fde2/idl/idl.json",
+    "localFile": "jup-lock-idl.json",
+    "bytes": 66301,
+    "sha256": "0c350e7420809a1d07645929ba0d84d1645b9c97bec3b043a83f605a0e9f6074",
+    "copiedWithoutChanges": true
+  },
+  "authorizationModeSource": {
+    "url": "https://github.com/jup-ag/jup-lock-starter/blob/e3b207471a4846bdca351d6709a135d06a14fde2/src/lock/modes.ts",
+    "sha256OfRetrievedSource": "86077f0dc7968cee15cb80ca1e7c02f3bee6d05fddfffbbf2b8608c03eec9cdd",
+    "updateRecipientModeLines": [9, 18],
+    "cancelModeLines": [48, 57],
+    "mappingsForBothModes": { "0": "None", "1": "Only creator", "2": "Only recipient", "3": "Creator or recipient" },
+    "note": "The official UI maps None to zero for both independent permission modes. These are not inferred from an unnamed byte. Source is linked, not copied into this repository."
+  },
+  "scheduleSource": {
+    "url": "https://github.com/jup-ag/jup-lock-starter/blob/e3b207471a4846bdca351d6709a135d06a14fde2/src/lock/parse.ts",
+    "sha256OfRetrievedSource": "f112cf378d942f5f110482777e0000b39f706e73559fa97dc6fc0debc49d3844",
+    "endFormula": "cliff_time + number_of_period * frequency",
+    "claimablePeriodicFormula": "amount_per_period * min(number_of_period, floor((now - cliff_time) / frequency)) when now >= cliff_time; zero before cliff",
+    "note": "The cliff itself releases cliff_unlock_amount, which is zero for TRUEQ. The first nonzero release is one complete frequency later."
+  },
+  "lockUi": {
+    "escrowUrl": "https://lock.jup.ag/escrow/4gKfvsvnjQoheN3wRAWcqUQderhfBajgcu7hh41Ho5vp",
+    "statusWhenChecked": 200,
+    "routeEvidence": "The official site's Next.js build manifest declares /escrow/[escrow]."
+  },
+  "limitations": [
+    "The historical program repository linked from the docs, https://github.com/jup-ag/jup-lock, returned HTTP 404 when checked. The official jup-ag starter repository provides the IDL and mode mappings used here.",
+    "This verifies escrow state and transaction behavior against the public interface. It is not an independent byte-for-byte build verification or audit of the Jupiter program."
+  ]
+}
