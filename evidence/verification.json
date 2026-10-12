@@ -1,6 +1,6 @@
 {
-  "startedAt": "2026-10-12T08:49:30.453Z",
-  "finishedAt": "2026-10-12T08:49:37.103Z",
+  "startedAt": "2026-10-12T09:44:00.131Z",
+  "finishedAt": "2026-10-12T09:44:05.175Z",
   "commitment": "finalized",
   "readOnly": true,
   "checks": [
@@ -154,6 +154,10 @@
       "ok": true
     },
     {
+      "label": "Jupiter: official IDL matches its pinned SHA-256",
+      "ok": true
+    },
+    {
       "label": "Jupiter: pinned IDL identifies the official program",
       "ok": true
     },
@@ -229,8 +233,175 @@
     {
       "label": "Jupiter receipt: escrow deposit and creator balance after vesting",
       "ok": true
+    },
+    {
+      "label": "Meteora: official IDL matches pinned SHA-256 and program",
+      "ok": true
+    },
+    {
+      "label": "Pool and position owned by Meteora DAMM v2",
+      "ok": true
+    },
+    {
+      "label": "DAMM v2: TRUEQ / wrapped SOL mints",
+      "ok": true
+    },
+    {
+      "label": "DAMM v2: expected vaults",
+      "ok": true
+    },
+    {
+      "label": "DAMM v2: expected creator",
+      "ok": true
+    },
+    {
+      "label": "DAMM v2: activation is 2026-10-12 15:00 UTC timestamp",
+      "ok": true
+    },
+    {
+      "label": "DAMM v2: enabled pool, no whitelisted pre-opening vault",
+      "ok": true
+    },
+    {
+      "label": "DAMM v2: linear fee, 300 one-second periods",
+      "ok": true
+    },
+    {
+      "label": "DAMM v2: fee 10% -> 1%, reduction 0.03 percentage points/second",
+      "ok": true
+    },
+    {
+      "label": "DAMM v2: dynamic fee disabled",
+      "ok": true
+    },
+    {
+      "label": "DAMM v2: fees collected only in token B (wSOL)",
+      "ok": true
+    },
+    {
+      "label": "DAMM v2: protocol share is 20% of trading fees",
+      "ok": true
+    },
+    {
+      "label": "DAMM v2: position belongs to pool and NFT",
+      "ok": true
+    },
+    {
+      "label": "DAMM v2: no free or temporarily vested position liquidity",
+      "ok": true
+    },
+    {
+      "label": "DAMM v2: permanently locked position equals entire pool liquidity",
+      "ok": true,
+      "details": "1170678108210830785790960230130"
+    },
+    {
+      "label": "DAMM v2: initial price 0.000179 SOL/TRUEQ",
+      "ok": true,
+      "details": 0.00017900000000000001
+    },
+    {
+      "label": "DAMM v2: range begins at initial price",
+      "ok": true
+    },
+    {
+      "label": "DAMM v2: range extends to protocol maximum",
+      "ok": true
+    },
+    {
+      "label": "Pool vault token accounts contain the correct mints and authority",
+      "ok": true
+    },
+    {
+      "label": "Pool creation: requested successful transaction",
+      "ok": true
+    },
+    {
+      "label": "Pool creation: creator signed",
+      "ok": true
+    },
+    {
+      "label": "Pool creation: exactly one DAMM v2 customizable pool initialization",
+      "ok": true
+    },
+    {
+      "label": "Pool creation: initialization account bindings match",
+      "ok": true
+    },
+    {
+      "label": "Pool creation: permanent lock instruction for this position",
+      "ok": true
+    },
+    {
+      "label": "Pool creation: original liquidity locked in full",
+      "ok": true
+    },
+    {
+      "label": "Pool creation: 150,000 TRUEQ and 1 lamport of wSOL rounding dust",
+      "ok": true
+    },
+    {
+      "label": "Pool creation predates scheduled activation",
+      "ok": true
+    },
+    {
+      "label": "Airdrop batch 1: requested successful receipt",
+      "ok": true
+    },
+    {
+      "label": "Airdrop batch 1: creator signed",
+      "ok": true
+    },
+    {
+      "label": "Airdrop batch 1: sent before trading opened",
+      "ok": true
+    },
+    {
+      "label": "Airdrop batch 1: direct transfer, no lock/escrow program",
+      "ok": true
+    },
+    {
+      "label": "Airdrop batch 1: TRUEQ TransferChecked into recipients' own associated accounts",
+      "ok": true
+    },
+    {
+      "label": "Airdrop batch 1: recipient credits and creator debit match",
+      "ok": true
+    },
+    {
+      "label": "Airdrop batch 2: requested successful receipt",
+      "ok": true
+    },
+    {
+      "label": "Airdrop batch 2: creator signed",
+      "ok": true
+    },
+    {
+      "label": "Airdrop batch 2: sent before trading opened",
+      "ok": true
+    },
+    {
+      "label": "Airdrop batch 2: direct transfer, no lock/escrow program",
+      "ok": true
+    },
+    {
+      "label": "Airdrop batch 2: TRUEQ TransferChecked into recipients' own associated accounts",
+      "ok": true
+    },
+    {
+      "label": "Airdrop batch 2: recipient credits and creator debit match",
+      "ok": true
+    },
+    {
+      "label": "Airdrop: exactly 11 distinct recipient wallets",
+      "ok": true
+    },
+    {
+      "label": "Airdrop: total 9,999.999995 TRUEQ",
+      "ok": true,
+      "details": "9999999995"
     }
   ],
-  "passed": 53,
+  "passed": 95,
   "failed": 0
 }

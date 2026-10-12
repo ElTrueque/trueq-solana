@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-12T09:44:05.173Z",
+  "mint": "3m4etpgjNhFduBznEtQo56u5rKpXEgcYbZzV7ijdiq8W",
+  "amountRaw": "9999999995",
+  "amount": "9999.999995",
+  "decimals": 6,
+  "recipientCount": 11,
+  "transferCount": 11,
+  "directTransfers": true,
+  "beforeActivation": "1791817200",
+  "batches": [
+    {
+      "signature": "2ooXvethi7mvkG3EaTqPL84wZHi92e5BsVnhg7qdxd9fetuFZaU5pFNmQWSrUDntyYpkr6KoHfPkaKdb3KTYnucS",
+      "slot": 455984925,
+      "blockTime": 1791794597,
+      "transferCount": 6,
+      "amountRaw": "4883720928"
+    },
+    {
+      "signature": "359QkVsJvdHtr4nmbgpBSFyae8zWgZMRxAY2UEJbpwSQBw3iicrVhtfqcr7UibeSBrqTEJL4w8wqK4ZAHfgds1zs",
+      "slot": 455984971,
+      "blockTime": 1791794607,
+      "transferCount": 5,
+      "amountRaw": "5116279067"
+    }
+  ],
+  "privacy": "Only aggregate totals and public receipt signatures are stored; no recipient list or raw receipt is saved."
+}

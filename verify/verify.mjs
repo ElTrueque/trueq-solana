@@ -132,6 +132,8 @@ export async function main(argv = process.argv.slice(2)) {
   await section('Creation receipt and instructions', async () => { const tx = await loadTransaction(EXPECTED.creation); const decoded = verifyCreation(tx, check); await record('creation', { signature: EXPECTED.creation, transaction: tx, decoded }); });
   await section('Burn receipt and instructions', async () => { const tx = await loadTransaction(EXPECTED.burn); const decoded = verifyBurn(tx, check); await record('burn', { signature: EXPECTED.burn, transaction: tx, decoded }); });
   await section('Jupiter Lock escrow', async () => { const { verifyJupiter } = await import('./jupiter.mjs'); await verifyJupiter({ rpc, check, record, loadTransaction }); });
+  await section('Meteora DAMM v2 pool and permanent lock', async () => { const { verifyMeteora } = await import('./meteora.mjs'); await verifyMeteora({ rpc, check, record, loadTransaction }); });
+  await section('Direct airdrop receipts (aggregate only)', async () => { const { verifyAirdrop } = await import('./airdrop.mjs'); await verifyAirdrop({ check, record, loadTransaction }); });
   const summary = { startedAt, finishedAt: new Date().toISOString(), commitment: 'finalized', readOnly: true, checks, passed: checks.filter(c => c.ok).length, failed: checks.filter(c => !c.ok).length };
   await record('verification', summary);
   console.log(`\n${summary.failed === 0 ? 'OK' : 'FALLA'} | ${summary.passed} passed; ${summary.failed} failed.`);
